@@ -12,3 +12,5 @@ the database.
 CHANGE LOG:
 
 1.0 - Initial Commit.
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Lokke/SteamFriender?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
