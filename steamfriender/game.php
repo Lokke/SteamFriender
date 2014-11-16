@@ -5,7 +5,6 @@ include 'includes/functions.php';
 include 'includes/header.php';
 include('simple_html_dom.php');
 
-###<!---sichtbarer teil game php --->###
 if (!(@$_GET['appID']))
 	header("location:gamelist.php");
 else
@@ -19,17 +18,9 @@ echo "<div id='view_game'>";
 echo "<h1 id=game_txt style='position:absolute;top:-50px;' align='center'>" . $game['name'] . "</h1>";
 echo "<img id='view_game_logo' align='center' src=" . $game_image . " />";
 echo "<center><a id=playnow href='steam://run/" . $game['appID'] . "'>Play Now</a></center>";
-//echo "<div id=type_group>";
-//echo "<p class=type align='center'>Multiplayer "; if ($game['isMultiplayer']){ echo "<img class=yes src=images/yes.png />"; } else { echo "<img class=no src=images/no.png />"; }" />";
-//echo "<p class=type align='center'>Co-op "; if ($game['isCoop']){ echo "<img class=yes src=images/yes.png />"; } else { echo "<img class=no src=images/no.png />"; }" />";
-//echo "<p class=type align='center'>Local Co-op "; if ($game['isLocalCoop']){ echo "<img class=yes src=images/yes.png />"; } else { echo "<img class=no src=images/no.png />"; }" />";
-//echo "</div>";
-//echo "<a href='search.php?appID=" . $game['appID'] . "'><img id='friend_image' src='images/friend.png' title='Find someone to play with!'></img></br></a>";
 echo "</div>";
 echo "<div id=search_result align=center>";
 include_once 'search.php';
 echo "</div>";
-###<!--- ende des sichtbaren Teils --->###
-
 include 'includes/footer.php';
 exit();
