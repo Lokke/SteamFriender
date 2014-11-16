@@ -91,8 +91,7 @@ foreach (@$xml->games->game as $i => $row){ //list all games
 
 $games = json_encode($games);
 sql("UPDATE users SET games='$games' WHERE steamid='$steamid'") or die(); 
-echo "</tr>";
-echo "</table>";
+
 
 echo "<table id=coop_list width=800 cellspacing=5>";
 echo "<tr>";
