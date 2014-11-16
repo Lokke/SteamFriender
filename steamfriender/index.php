@@ -4,8 +4,9 @@ include 'includes/config.php';
 include 'includes/functions.php';
 include 'includes/header.php';
 
-$steamkey = '2784DFBCF69A5FC167FE5FCC4EDC13B5';
-$steam_user_url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=2784DFBCF69A5FC167FE5FCC4EDC13B5&steamids=';
+
+$steamkey = '99AC8344E7F3A094A8847DE111A21A14';
+$steam_user_url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=99AC8344E7F3A094A8847DE111A21A14&steamids=';
 $openid = new LightOpenID($site);
 $expire = time()+(60*60*24*365);
 
@@ -90,6 +91,7 @@ if ((@$_GET['id']) && (!(@$_SESSION['steamid'])) && (!(@$_COOKIE['steamid']))){ 
 		'$locstatecode',
 		'$loccityid')") or die("Failed!");
 	}
+	
 	if ($answered == 1)
 		header("location:gamelist.php");
 	else

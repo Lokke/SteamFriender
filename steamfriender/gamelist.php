@@ -68,86 +68,39 @@ foreach (@$xml->games->game as $i => $row){ //list all games
 
 		//$game = file_get_html($row->storeLink[0]);
 			
-		if (strpos($game, '<div class="name">Co-op</div>'))
-			$isCoop = 1;
-		if (strpos($game, '<div class="name">Multi-player</div>'))
-			$isMultiplayer = 1;
-		if (strpos($game, '<div class="name">Local Co-op</div>'))
-			$isLocalCoop = 1;
+		//if (strpos($game, '<div class="name">Co-op</div>'))
+		//	$isCoop = 1;
+		//if (strpos($game, '<div class="name">Multi-player</div>'))
+		//	$isMultiplayer = 1;
+		//if (strpos($game, '<div class="name">Local Co-op</div>'))
+		//	$isLocalCoop = 1;
 
+	
 
 
 		$name = str_replace("'", "", $row->name); 
-		mysql_query("INSERT INTO games(
+		sql("UPDATE INTO games(
 		name, 
-		appID, 
-		logo, 
-		storeLink,
-		IsCoop,
-		IsMultiplayer,
-		isLocalCoop)VALUES(
+		appID,)VALUES(
 		'$name', 
-		'$row->appID', 
-		'$row->logo', 
-		'$row->storeLink', 
-		'$isCoop', 
-		'$isMultiplayer',
-		'$isLocalCoop')") or die("Failed!");
+		'$row->appID',')") or die("Failed!");
 	}
 }
+
+
+
 $games = json_encode($games);
-mysql_query("UPDATE users SET games='$games' WHERE steamid='$steamid'") or die(); 
+sql("UPDATE users SET games='$games' WHERE steamid='$steamid'") or die(); 
 echo "</tr>";
 echo "</table>";
 
 echo "<table id=coop_list width=800 cellspacing=5>";
 echo "<tr>";
 $num_games = 1;
-foreach ($xml->games->game as $i => $row){ //list all coop games
-	$game = sql("SELECT logo,name,appID,isCoop FROM games WHERE appID='$row->appID'");
-	if ($game['isCoop'] == 1){
-		if ($num_games % 5 == 1){
-			echo "</tr>";
-			echo "<tr>";
-		}
-		echo "<td width=184 height=69><a href='game.php?appID=" . $game['appID'] . "'><img id=" . $game['appID'] . " width=184 height=69 class='game_img' src=" . $game['logo'] . " title='" . $game['name'] . "' ></img></a></td>";
-		$num_games++;
-	}
-}
+
 echo "</tr>";
 echo "</table>";
 
-echo "<table id=local_coop_list width=800 cellspacing=5>";
-echo "<tr>";
-$num_games = 1;
-foreach ($xml->games->game as $i => $row){ //list all coop games
-	$game = sql("SELECT logo,name,appID,isLocalCoop FROM games WHERE appID='$row->appID'");
-	if ($game['isLocalCoop'] == 1){
-		if ($num_games % 5 == 1){
-			echo "</tr>";
-			echo "<tr>";
-		}
-		echo "<td width=184 height=69><a href='game.php?appID=" . $game['appID'] . "'><img id=" . $game['appID'] . " width=184 height=69 class='game_img' src=" . $game['logo'] . " title='" . $game['name'] . "' /></a></td>";
-		$num_games++;
-	}
-}
-echo "</tr>";
-echo "</table>";
-
-echo "<table id=multiplayer_list width=800 cellspacing=5>";
-echo "<tr>";
-$num_games = 1;
-foreach ($xml->games->game as $i => $row){ //list all coop games
-	$game = sql("SELECT logo,name,appID,isMultiplayer FROM games WHERE appID='$row->appID'");
-	if ($game['isMultiplayer'] == 1){
-		if ($num_games % 5 == 1){
-			echo "</tr>";
-			echo "<tr>";
-		}
-		echo "<td width=184 height=69><a href='game.php?appID=" . $game['appID'] . "'><img id=" . $game['appID'] . " width=184 height=69 class='game_img' src=" . $game['logo'] . " title='" . $game['name'] . "' /></a></td>";
-		$num_games++;
-	}
-}
 echo "</tr>";
 echo "</table>";
 

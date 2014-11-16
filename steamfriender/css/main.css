@@ -12,9 +12,10 @@ body{
     margin-bottom:0;
 }
 
-#game_background{
-	height:570px;
-	width:1004px;
+#game_background{ 
+	height: 100%;
+	overflow: hidden;
+	background-size: 100% ;
 	background-repeat:no-repeat;
 	position:absolute;
 	margin:auto;

@@ -110,7 +110,7 @@ function getFriend($user, $friendp){
 		if ($genre_relevance >= (count($user_genre) - 1))
 			$relevance++;
 
-		$friendp[$count] = array('steamid' => $friend['steamid'], "relevance" => $relevance, "personaname" => $friend['personaname'], "avatar" => $friend['avatarmedium'], "profileurl" => $friend['profileurl']);
+		$friendp[$count] = array('steamid' => $friend['steamid'], "relevance" => $relevance, "personaname" => $friend['personaname'], "avatar" => $friend['avatar'], "profileurl" => $friend['profileurl']);
 		$count++;
 	}
 	return $friendp;
